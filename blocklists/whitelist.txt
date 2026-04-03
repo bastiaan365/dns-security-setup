@@ -1,0 +1,86 @@
+# =============================================================================
+# Whitelist - False Positive Overrides
+# =============================================================================
+# Domains listed here will be EXCLUDED from the generated blocklist.
+# One domain per line. Lines starting with # are comments.
+#
+# These are commonly blocked domains that cause breakage if filtered.
+# =============================================================================
+
+# --- Microsoft Connectivity & Updates -----------------------------------------
+login.microsoftonline.com
+login.live.com
+outlook.office365.com
+graph.microsoft.com
+officeclient.microsoft.com
+clientconfig.microsoftonline-p.net
+aadcdn.msauth.net
+msftconnecttest.com
+www.msftconnecttest.com
+
+# --- Apple Services -----------------------------------------------------------
+captive.apple.com
+gsp-ssl.ls.apple.com
+gspe1-ssl.ls.apple.com
+push.apple.com
+mesu.apple.com
+swscan.apple.com
+appldnld.apple.com
+updates-http.cdn-apple.com
+osxapps.itunes.apple.com
+
+# --- Google Services ----------------------------------------------------------
+clients1.google.com
+clients2.google.com
+clients3.google.com
+clients4.google.com
+connectivitycheck.gstatic.com
+www.gstatic.com
+android.clients.google.com
+play.googleapis.com
+
+# --- Captive Portal Detection -------------------------------------------------
+# Used by devices to detect whether they are behind a captive portal.
+detectportal.firefox.com
+connectivity-check.ubuntu.com
+nmcheck.gnome.org
+network-test.debian.org
+captive.apple.com
+
+# --- CDN / Critical Infrastructure -------------------------------------------
+cdn.jsdelivr.net
+cdnjs.cloudflare.com
+unpkg.com
+raw.githubusercontent.com
+api.github.com
+github.com
+gravatar.com
+i0.wp.com
+i1.wp.com
+i2.wp.com
+
+# --- Certificate Validation (OCSP / CRL) -------------------------------------
+ocsp.digicert.com
+ocsp.pki.goog
+ocsp.entrust.net
+ocsp.usertrust.com
+crl.microsoft.com
+crl3.digicert.com
+crl4.digicert.com
+
+# --- Streaming / Smart TV (uncomment if needed) -------------------------------
+# api.netflix.com
+# api.spotify.com
+# spclient.wg.spotify.com
+# apresolve.spotify.com
+
+# --- Gaming (uncomment if needed) ---------------------------------------------
+# xbox.ipv6.microsoft.com
+# device.auth.xboxlive.com
+# xsts.auth.xboxlive.com
+
+# --- IoT / Smart Home (uncomment if needed) -----------------------------------
+# api2.frontdoor.ring.com
+# mqtt-mini.facebook.com
+# ntp.ubuntu.com
+# time.google.com

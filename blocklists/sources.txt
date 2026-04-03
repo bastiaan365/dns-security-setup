@@ -1,0 +1,52 @@
+# =============================================================================
+# Blocklist Sources
+# =============================================================================
+# One URL per line. Lines starting with # are comments.
+# These lists are downloaded and merged by update-blocklists.sh.
+#
+# Total estimated unique domains: ~280,000
+# =============================================================================
+
+# --- StevenBlack Unified Hosts ------------------------------------------------
+# Comprehensive list merging multiple sources: ads, malware, fakenews, gambling.
+# https://github.com/StevenBlack/hosts
+https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+
+# --- OISD (Full) -------------------------------------------------------------
+# "One blocklist to rule them all" - carefully curated, low false-positive rate.
+# https://oisd.nl/
+https://big.oisd.nl/domainswild
+
+# --- Energized Protection (Unified) ------------------------------------------
+# Blocks ads, analytics, tracking, malware, crypto-mining, and more.
+# https://energized.pro/
+https://block.energized.pro/unified/formats/domains.txt
+
+# --- Pete Lowe's Ad and Tracking Server List ----------------------------------
+# Long-running, well-maintained blocklist.
+https://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml&showintro=0&mimetype=plaintext
+
+# --- Dan Pollock's Hosts File -------------------------------------------------
+# Classic hosts-based blocklist, updated regularly.
+https://someonewhocares.org/hosts/zero/hosts
+
+# --- URLhaus Malware Domains --------------------------------------------------
+# Actively exploited malware distribution domains from abuse.ch.
+https://urlhaus.abuse.ch/downloads/hostfile/
+
+# --- Phishing Army (Extended) ------------------------------------------------
+# Known phishing domains sourced from multiple threat intelligence feeds.
+https://phishing.army/download/phishing_army_blocklist_extended.txt
+
+# --- NoTracking Tracker Blocklist ---------------------------------------------
+# Tracking and telemetry domains.
+https://raw.githubusercontent.com/notracking/hosts-blocklists/master/dnscrypt-proxy/dnscrypt-proxy.blacklist.txt
+
+# --- Hagezi DNS Blocklist (Pro) -----------------------------------------------
+# Multi-source, highly maintained blocklist with excellent coverage.
+# https://github.com/hagezi/dns-blocklists
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/pro.txt
+
+# --- 1Hosts (Lite) -----------------------------------------------------------
+# Curated blocklist with a focus on minimal false positives.
+https://o0.pages.dev/Lite/domains.txt
