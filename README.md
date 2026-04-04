@@ -1,23 +1,23 @@
-# 🌐 DNS Security Setup
+# DNS Security Setup
 
-Privacy-first DNS configuration using Unbound with DNS-over-TLS, DNSSEC validation and curated blocklists. Designed for OPNsense but works standalone on any Linux system.
+Unbound-based DNS config with DNS-over-TLS, DNSSEC and blocklists. I use this on OPNsense but it works on any Linux box.
 
-## 🔒 What This Does
+## How it works
 
 ```text
 [Client] → [Unbound (local)] → [DNS-over-TLS] → [Upstream resolver]
-                ↓
-         DNSSEC validation
-         Blocklist filtering
-         Query logging
+                                       ↓
+                                DNSSEC validation
+                                Blocklist filtering
+                                Query logging
 ```
 
-- **Encrypts** all DNS queries via DNS-over-TLS (no plain-text DNS leaves your network)
-- **Validates** responses with DNSSEC (prevents DNS spoofing)
-- **Blocks** ads, trackers, malware and telemetry domains before they resolve
-- **Logs** queries for monitoring and anomaly detection via Grafana
+- All DNS queries are encrypted via TLS — nothing leaves the network in plain text
+- DNSSEC validates responses to prevent spoofing
+- Ads, trackers, malware and telemetry domains get blocked before they resolve
+- Queries are logged for Grafana monitoring
 
-## 📊 Blocklist Stats
+## Blocklist stats
 
 | Category | Domains blocked |
 |---|---|
@@ -27,13 +27,13 @@ Privacy-first DNS configuration using Unbound with DNS-over-TLS, DNSSEC validati
 | IoT telemetry | ~15,000 |
 | **Total unique** | **~280,000** |
 
-## 🚀 Quick Start
+## Getting started
 
 ### OPNsense
 
 1. Copy `unbound/opnsense-custom.conf` to `/var/unbound/etc/`
-2. Import blocklists via OPNsense Unbound DNS plugin
-3. Enable DNS-over-TLS in Services → Unbound DNS → General
+2. Import blocklists via the Unbound DNS plugin
+3. Turn on DNS-over-TLS under Services → Unbound DNS → General
 
 ### Standalone Linux
 
@@ -43,50 +43,48 @@ cd dns-security-setup
 sudo ./install.sh
 ```
 
-## 📁 Structure
+## File structure
 
 ```
 ├── unbound/
 │   ├── unbound.conf              # Main config
-│   ├── opnsense-custom.conf      # OPNsense-specific overrides
-│   ├── dns-over-tls.conf         # TLS upstream configuration
+│   ├── opnsense-custom.conf      # OPNsense overrides
+│   ├── dns-over-tls.conf         # TLS upstream setup
 │   └── dnssec.conf               # DNSSEC settings
 ├── blocklists/
 │   ├── update-blocklists.sh      # Auto-update script
 │   ├── sources.txt               # Blocklist URLs
 │   └── whitelist.txt             # False-positive overrides
 ├── monitoring/
-│   ├── telegraf-dns.conf         # Telegraf DNS query collector
+│   ├── telegraf-dns.conf         # Telegraf DNS collector
 │   └── grafana-dns-dashboard.json
 └── install.sh
 ```
 
-## 🔧 Upstream Resolvers
-
-Configured for privacy-respecting resolvers with TLS:
+## Upstream resolvers
 
 | Resolver | IP | TLS hostname |
 |---|---|---|
 | Quad9 | 9.9.9.9 | dns.quad9.net |
 | Cloudflare | 1.1.1.1 | cloudflare-dns.com |
 
-Both support DNSSEC and have no-logging policies.
+Both support DNSSEC and don't log queries.
 
-## 💡 Why DNS Security Matters
+## Why bother with DNS security
 
-Most home networks send DNS queries in plain text — visible to your ISP and anyone on the network. Smart home devices often resolve tracking domains silently. This setup ensures:
+Most home networks send DNS in plain text — your ISP can see every domain you visit. Smart home devices quietly resolve tracking domains in the background. This setup fixes that:
 
-- Your ISP cannot see which domains you visit
-- Malware domains are blocked before reaching any device
-- IoT devices cannot phone home to unauthorized servers
+- ISP can't see your DNS traffic
+- Malware domains get blocked network-wide
+- IoT devices can't phone home to random servers
 - DNS responses are cryptographically validated
 
-## 🔗 Related
+## See also
 
-- [Homelab Infrastructure](https://github.com/bastiaan365/homelab-infrastructure) — Full network architecture
+- [Homelab Infrastructure](https://github.com/bastiaan365/homelab-infrastructure) — the network this runs on
 - [Grafana Dashboards](https://github.com/bastiaan365/grafana-dashboards) — DNS monitoring dashboard
-- [bastiaan365.com](https://bastiaan365.com) — Full write-up
+- [bastiaan365.com](https://bastiaan365.com) — full write-up
 
 ---
 
-*Blocklist sources are updated weekly via cron. Configuration uses placeholder IPs — adjust for your network.*
+*Blocklists update weekly via cron. Config uses placeholder IPs — change them for your network.*
